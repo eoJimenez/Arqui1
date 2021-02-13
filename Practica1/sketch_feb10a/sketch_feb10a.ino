@@ -26,9 +26,10 @@ MD_MAX72XX matrizJuego1 = MD_MAX72XX(MD_MAX72XX::GENERIC_HW, DATA_PIN, CLK_PIN, 
 const int buttonPin5 = 5;//pin entrada velocidad del mensaje
 const int buttonPin6 = 6;//pin entrada direccion mensaje
 
-
-
-
+const int btArriba = 4
+const int btAbajo = 3
+const int btIzquierda = 2
+const int btDerecha =1
 
 
 /////////////////JUEGO!!!
@@ -118,5 +119,16 @@ void loop() {
     matrizJuego1.setPoint(snake[0].columna, snake[0].fila, false);
     delay(2000);
   */
+
+}
+
+void letreroGame(){
+matriz.begin(); //inicializando objeto tipo MD_Parola
+  matriz.setIntensity(15); //intensidad de brillo valores entre 0 - 15
+  matriz.displayClear(); //limpiando la matriz
+  matriz.displayText("GAME OVER :(", PA_LEFT, 100, 0, PA_SCROLL_LEFT, PA_SCROLL_LEFT);
+  randomSeed(analogRead(0));
+  estado = 0;
+}
 
 }
