@@ -97,166 +97,336 @@ void loop() {
 
 ///***************MÉTODO DE ILUMINACION Y SALIDA************///
 void Iluminacion() {
-  while (true) {
+  while (true) {//ESTA DENTRO DE UN WHILE(TRUE) PARA QUE SE EJECUTE HASTA QUE SE VALIDE LA CONDICIÓN DE SALIDA, AÑADIR CONDICIÓN DE SALIDA
     int ldr1 = analogRead(A0);
     int ldr2 = analogRead(A1);
     int ldr3 = analogRead(A2);
     int ldr4 = analogRead(A3);
-    if (ldr1 >= 500) {
+    if (ldr1 >= 500 && ldr2 >= 500 && ldr3 >= 500 && ldr4 >= 500) {//todas encendidas
+      for (int i = 1; i <= 4; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(1000);
+        lcd.clear();
+      }
+    }else if (ldr1 < 500 && ldr2 >= 500 && ldr3 >= 500 && ldr4 >= 500){//1 apagada, 2,3,4 encendidas
+      lcd.home();
+      lcd.print("HABITACION 1:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+      for (int i = 2; i <= 4; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(1000);
+        lcd.clear();
+      }
+    }else if(ldr1 < 500 && ldr2 < 500 && ldr3 >= 500 && ldr4 >= 500){//1,2 apagadas 3,4 encendidas
+      for (int i = 1; i <= 2; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Apagada");
+        delay(1000);
+        lcd.clear();
+      }
+      for (int i = 3; i <= 4; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(1000);
+        lcd.clear();
+      }
+    }else if(ldr1 < 500 && ldr2 < 500 && ldr3 < 500 && ldr4 >= 500){//4 encendida, demás apagadas
+      for (int i = 1; i <= 3; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Apagada");
+        delay(1000);
+        lcd.clear();
+      }
+      lcd.home();
+      lcd.print("HABITACION 4:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(1000);
+      lcd.clear();
+    }else if (ldr1 < 500 && ldr2 < 500 && ldr3 >= 500 && ldr4 < 500){//1,2,4 apagadas, 3 encendida
+      for (int i = 1; i <= 2; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Apagada");
+        delay(1000);
+        lcd.clear();
+      }
+      lcd.home();
+      lcd.print("HABITACION 3:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(1000);
+      lcd.clear();
+      lcd.home();
+      lcd.print("HABITACION 4:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+    }else if (ldr1 < 500 && ldr2 >= 500 && ldr3 < 500 && ldr4 < 500){//1,3,4 apagadas, 2 encendida
+      lcd.home();
+      lcd.print("HABITACION 1:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+      lcd.home();
+      lcd.print("HABITACION 2:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(1000);
+      lcd.clear();
+      for (int i = 3; i <= 4; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Apagada");
+        delay(1000);
+        lcd.clear();
+      }
+    }else if (ldr1 < 500 && ldr2 >= 500 && ldr3 < 500 && ldr4 >= 500){//1,3 apagadas, 2,4 encendida
+      lcd.home();
+      lcd.print("HABITACION 1:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+      lcd.home();
+      lcd.print("HABITACION 2:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(1000);
+      lcd.clear();
+      lcd.home();
+      lcd.print("HABITACION 3:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+      lcd.home();
+      lcd.print("HABITACION 4:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(1000);
+      lcd.clear();
+    }else if (ldr1 < 500 && ldr2 >= 500 && ldr3 >= 500 && ldr4 < 500){//1,4 apagadas, 2,3 encendida
+      lcd.home();
+      lcd.print("HABITACION 1:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+      for (int i = 2; i <= 3; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(1000);
+        lcd.clear();
+      }
+      lcd.home();
+      lcd.print("HABITACION 4:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+    }else if (ldr1 >= 500 && ldr2 < 500 && ldr3 < 500 && ldr4 < 500){//1 encendida, demás apagadas
       lcd.home();
       lcd.print("HABITACION 1:");
       lcd.setCursor (0, 1);
       lcd.print("Luz Encendida");
-      delay(3000);
+      delay(1000);
       lcd.clear();
-      if (ldr2 >= 500) {
+      for (int i = 2; i <= 4; i++) {
         lcd.home();
-        lcd.print("HABITACION 2:");
-        lcd.setCursor (0, 1);
-        lcd.print("Luz Encendida");
-        delay(3000);
-        lcd.clear();
-        if (ldr3 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 3:");
-          lcd.setCursor(0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-          if (ldr4 >= 500) {
-            lcd.home();
-            lcd.print("HABITACION 4:");
-            lcd.setCursor(0, 1);
-            lcd.print("Luz Encendida");
-            delay(3000);
-            lcd.clear();
-          }
-        } else if (ldr3 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 3:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        } else if (ldr4 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 4:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        }
-      } else if (ldr2 >= 500) {
-        lcd.home();
-        lcd.print("HABITACION 2:");
-        lcd.setCursor (0, 1);
-        lcd.print("Luz Encendida");
-        delay(3000);
-        lcd.clear();
-        if (ldr1 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 1:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        } else if (ldr3 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 3:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        } else if (ldr4 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 4:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        }
-      } else if (ldr3 >= 500) {
-        lcd.home();
-        lcd.print("HABITACION 3:");
-        lcd.setCursor (0, 1);
-        lcd.print("Luz Encendida");
-        delay(3000);
-        lcd.clear();
-        if (ldr1 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 1:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        } else if (ldr2 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 2:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        } else if (ldr4 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 4:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        }
-      } else if (ldr4 >= 500) {
-        lcd.home();
-        lcd.print("HABITACION 4:");
-        lcd.setCursor (0, 1);
-        lcd.print("Luz Encendida");
-        delay(3000);
-        lcd.clear();
-        if (ldr1 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 1:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        } else if (ldr2 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 2:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        } else if (ldr3 >= 500) {
-          lcd.home();
-          lcd.print("HABITACION 3:");
-          lcd.setCursor (0, 1);
-          lcd.print("Luz Encendida");
-          delay(3000);
-          lcd.clear();
-        }
-      } else {
-        lcd.home();
-        lcd.print("HABITACION 1:");
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
         lcd.setCursor (0, 1);
         lcd.print("Luz Apagada");
-        delay(3000);
+        delay(1000);
         lcd.clear();
+      }
+    }else if (ldr1 >= 500 && ldr2 < 500 && ldr3 < 500 && ldr4 >= 500){//1,4 encendida, 2,3 apagada
+      lcd.home();
+      lcd.print("HABITACION 1:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(1000);
+      lcd.clear();
+      for (int i = 2; i <= 3; i++) {
         lcd.home();
-        lcd.print("HABITACION 2:");
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
         lcd.setCursor (0, 1);
         lcd.print("Luz Apagada");
-        delay(3000);
+        delay(1000);
         lcd.clear();
+      }
+      lcd.home();
+      lcd.print("HABITACION 4:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(1000);
+      lcd.clear();
+    }else if (ldr1 >= 500 && ldr2 < 500 && ldr3 >= 500 && ldr4 < 500){//1,3 encendida, 2,4 apagada
+      lcd.home();
+      lcd.print("HABITACION 1:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(1000);
+      lcd.clear();
+      lcd.home();
+      lcd.print("HABITACION 2:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+      lcd.home();
+      lcd.print("HABITACION 3:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(1000);
+      lcd.clear();
+      lcd.home();
+      lcd.print("HABITACION 4:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+    }else if (ldr1 >= 500 && ldr2 < 500 && ldr3 >= 500 && ldr4 >= 500){//1,3,4 encendidas, 2 apagada
+      lcd.home();
+      lcd.print("HABITACION 1:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(1000);
+      lcd.clear();
+      lcd.home();
+      lcd.print("HABITACION 2:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+      for (int i = 3; i <= 4; i++) {
         lcd.home();
-        lcd.print("HABITACION 3:");
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(1000);
+        lcd.clear();
+      }
+    }else if(ldr1 >= 500 && ldr2 >= 500 && ldr3 < 500 && ldr4 < 500){//1,2 encendidas 3,4 apagadas
+      for (int i = 1; i <= 2; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(1000);
+        lcd.clear();
+      }
+      for (int i = 3; i <= 4; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
         lcd.setCursor (0, 1);
         lcd.print("Luz Apagada");
-        delay(3000);
+        delay(1000);
         lcd.clear();
+      }
+    }else if (ldr1 >= 500 && ldr2 >= 500 && ldr3 >= 500 && ldr4 < 500){//1,2,3 encendida, 4 apagada
+      for (int i = 1; i <= 3; i++) {
         lcd.home();
-        lcd.print("HABITACION 4:");
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(1000);
+        lcd.clear();
+      }
+      lcd.home();
+      lcd.print("HABITACION 4:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Apagada");
+      delay(1000);
+      lcd.clear();
+    }else {//todas apagadas
+      for (int i = 1; i <= 4; i++) {
+        lcd.home();
+        lcd.print("HABITACION");
+        lcd.setCursor(11,0);
+        lcd.print(i);
+        lcd.setCursor(12,0);
+        lcd.print(":");
         lcd.setCursor (0, 1);
         lcd.print("Luz Apagada");
-        delay(3000);
+        delay(1000);
         lcd.clear();
       }
     }
