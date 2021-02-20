@@ -87,7 +87,178 @@ void loop() {
       lcd.print("SU CONTRASENA");
       delay(2000);
       lcd.clear();
-  //********************Sensor Ultrasonico de Salida******//
+  //*********************Validar Contraseña*************************//
+    //********************Sistema de iluminación*********************//
+    Iluminacion();
+    //********************Sensor Ultrasonico de Salida******//
   
+  }
+}
+
+///***************MÉTODO DE ILUMINACION Y SALIDA************///
+void Iluminacion() {
+  while (true) {
+    int ldr1 = analogRead(A0);
+    int ldr2 = analogRead(A1);
+    int ldr3 = analogRead(A2);
+    int ldr4 = analogRead(A3);
+    if (ldr1 >= 500) {
+      lcd.home();
+      lcd.print("HABITACION 1:");
+      lcd.setCursor (0, 1);
+      lcd.print("Luz Encendida");
+      delay(3000);
+      lcd.clear();
+      if (ldr2 >= 500) {
+        lcd.home();
+        lcd.print("HABITACION 2:");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(3000);
+        lcd.clear();
+        if (ldr3 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 3:");
+          lcd.setCursor(0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+          if (ldr4 >= 500) {
+            lcd.home();
+            lcd.print("HABITACION 4:");
+            lcd.setCursor(0, 1);
+            lcd.print("Luz Encendida");
+            delay(3000);
+            lcd.clear();
+          }
+        } else if (ldr3 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 3:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        } else if (ldr4 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 4:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        }
+      } else if (ldr2 >= 500) {
+        lcd.home();
+        lcd.print("HABITACION 2:");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(3000);
+        lcd.clear();
+        if (ldr1 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 1:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        } else if (ldr3 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 3:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        } else if (ldr4 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 4:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        }
+      } else if (ldr3 >= 500) {
+        lcd.home();
+        lcd.print("HABITACION 3:");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(3000);
+        lcd.clear();
+        if (ldr1 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 1:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        } else if (ldr2 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 2:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        } else if (ldr4 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 4:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        }
+      } else if (ldr4 >= 500) {
+        lcd.home();
+        lcd.print("HABITACION 4:");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Encendida");
+        delay(3000);
+        lcd.clear();
+        if (ldr1 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 1:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        } else if (ldr2 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 2:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        } else if (ldr3 >= 500) {
+          lcd.home();
+          lcd.print("HABITACION 3:");
+          lcd.setCursor (0, 1);
+          lcd.print("Luz Encendida");
+          delay(3000);
+          lcd.clear();
+        }
+      } else {
+        lcd.home();
+        lcd.print("HABITACION 1:");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Apagada");
+        delay(3000);
+        lcd.clear();
+        lcd.home();
+        lcd.print("HABITACION 2:");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Apagada");
+        delay(3000);
+        lcd.clear();
+        lcd.home();
+        lcd.print("HABITACION 3:");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Apagada");
+        delay(3000);
+        lcd.clear();
+        lcd.home();
+        lcd.print("HABITACION 4:");
+        lcd.setCursor (0, 1);
+        lcd.print("Luz Apagada");
+        delay(3000);
+        lcd.clear();
+      }
+    }
   }
 }
