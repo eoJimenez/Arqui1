@@ -1,0 +1,23 @@
+
+Pasos para instalar la libreria:
+
+
+1)-> Descomprimir el archivo "Libreria Sensor Ultrasonic.rar"
+
+
+2)-> Copie los 3 archivos generados 
+
+
+3)-> Pegue los archivos en la carpeta llamada "LIBRARY" o "LIBRERIAS" que se encuentra dentro de 
+los archivos de "PROTEUS"
+
+
+4)-> y listo puede abrir proteus y aparecera el Modulo del Sensor.
+
+
+Gracias! no olvides compartir mis videos, darle like, comentar y suscribirte, me apoyarias mucho!
+
+
+por si acaso, puedes comunicarte conmigo a la siguiente direccion de correo:
+
+inveinno2017@hotmail.com
